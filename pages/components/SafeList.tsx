@@ -11,8 +11,8 @@ export function SafeList() {
     const stanieth: string = "0x2E21f5d32841cf8C7da805185A041400bF15f21A";//stani.eth
     const [ownerAddress, setOwnerAddress] = useState(stanieth);
     const { safes } = useSuspense(getSafes, { ownerAddress });
-    console.log(ownerAddress)
-    console.log(safes)
+    // console.log(ownerAddress)
+    // console.log(safes)
     return (
         <>
             <SearchBar
@@ -52,6 +52,7 @@ function SearchBar({ searchQuery, setSearchQuery }: SearchBarProps) {
                 value={value}
                 onChange={(event) => setValue((event.target as HTMLInputElement).value)}
                 type="text"
+                size={42}
             />
             <button type="button"
                 onClick={() => setSearchQuery(value)}>

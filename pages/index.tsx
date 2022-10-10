@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { SafeList } from './components/SafeList'
+import { NetworkErrorBoundary } from 'rest-hooks';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +14,10 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <h1>safe-viewer</h1>
-        <SafeList />
+        {/* TODO: do something better here to handle errors and loading once next.js 12.3 is released */}
+        <NetworkErrorBoundary fallbackComponent={SafeList}>
+          <SafeList />
+        </NetworkErrorBoundary>
       </main>
     </div>
   )
