@@ -1,6 +1,7 @@
 import { useSuspense } from "rest-hooks";
 import { RestEndpoint } from "@rest-hooks/rest";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Web3 from "web3";
 
 const getSafes = new RestEndpoint({
     urlPrefix: 'https://safe-transaction.gnosis.io',
@@ -10,7 +11,7 @@ const getSafes = new RestEndpoint({
 export default function SafeList() {
     const stanieth: string = "0x2E21f5d32841cf8C7da805185A041400bF15f21A";//stani.eth
     const [ownerAddress, setOwnerAddress] = useState(stanieth);
-    const { safes } = useSuspense(getSafes, { ownerAddress });
+    const { safes } = useSuspense(getSafes, { ownerAddress: Web3.utils.toChecksumAddress(ownerAddress) });
     // console.log(ownerAddress)
     // console.log(safes)
     return (
