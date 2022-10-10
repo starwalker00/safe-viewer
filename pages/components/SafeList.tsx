@@ -7,7 +7,7 @@ const getSafes = new RestEndpoint({
     path: '/api/v1/owners/:ownerAddress/safes/',
 });
 
-export function SafeList() {
+export default function SafeList() {
     const stanieth: string = "0x2E21f5d32841cf8C7da805185A041400bF15f21A";//stani.eth
     const [ownerAddress, setOwnerAddress] = useState(stanieth);
     const { safes } = useSuspense(getSafes, { ownerAddress });
