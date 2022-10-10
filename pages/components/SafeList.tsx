@@ -21,7 +21,7 @@ export function SafeList() {
             />
             {
                 safes.map((safeAddress: any) => {
-                    return (<Safe address={safeAddress} />)
+                    return (<Safe key={safeAddress} address={safeAddress} />)
                 })
             }
         </>
